@@ -1,6 +1,23 @@
-.wrapper {
+wrapper {
     height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+header {
+    float: left;
+    background-color: #000;
+}
+
+header ul {
+    float: right;
+    list-style: none;
+}
+
+header li {
+    display: inline;
+    float: left;
+    text-align: center;
+
 }
