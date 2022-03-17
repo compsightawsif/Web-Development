@@ -5,14 +5,32 @@
     <title>Admin Index</title>
 </head>
 <body>
-<textarea>Professional Statement</textarea>
-<textarea>Brief Biography</textarea>
-<input type="submit">
+<textarea id="adminStatement">Professional Statement</textarea>
+<textarea id="adminBio">Brief Biography</textarea>
+<input type="submit" onclick="submitIndex()">
 </body>
 </html>
 
 <script type="text/javascript">
     function submitIndex() {
+
+        var textInput ="Admin index form value:";
+        var statementText = document.getElementById("adminStatement").value;
+        textInput +="\r\nStatement : "+ statementText + "\r\n";
+        var bioText = document.getElementById("adminBio").value
+        textInput +="Bio : "+ bioText +"\r\n";
+        var myBlob = new Blob([textInput],{type:"text/plain"});
+
+
+        var url = window.URL.createObjectURL(myBlob);
+        var anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = "information.txt";
+
+        anchor.click();
+        window.URL.revokeObjectURL(url);
+        //document.removeChild(anchor);
+
 
     }
 </script>
