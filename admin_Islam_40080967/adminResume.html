@@ -3,14 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Resume</title>
+    <link rel="stylesheet" href="CSS/styles.css"/>
 </head>
 <body>
-<textarea>Educational Qualifications</textarea>
-<textarea>Skill Set</textarea>
-<textarea>Awards/Recognition</textarea>
-<textarea>Work Experience</textarea>
-<textarea>Referees</textarea>
+<div>
+    <ul id="list-nav">
+        <li><a href="adminIndex.html">Home</a></li>
+        <li><a href="adminResume.html">Resume</a></li>
+        <li><a href="adminProjects.html">Projects</a></li>
+        <li><a href="adminContact.html">Contact</a></li>
+        <li><a href="adminSocial.html">Social</a></li>
+        <li><a href="logout.html">Logout</a></li>
+    </ul>
+</div>
+<label for="education">Educational Qualifications</label><br><textarea id="education"></textarea><br>
+<label for="skills">Skill Set</label><br><textarea id="skills"></textarea><br>
+<label for="awards">Awards/Recognition</label><br><textarea id="awards"></textarea><br>
+<label for="work">Work Experience</label><br><textarea id="work"></textarea><br>
+<label for="referees">Referees</label><br><textarea id="referees"></textarea>
 
-<input type="submit">
+<input type="submit" onclick="submitResume()">
 </body>
 </html>
+
+<script type="text/javascript">
+    function submitResume() {
+
+        var textInput ="Admin resume form value:";
+        var educationText = document.getElementById("education").value;
+        textInput +="\r\nEducational Qualifications : "+ educationText + "\r\n";
+        var skillsText = document.getElementById("skills").value
+        textInput +="\r\nSkill Set : "+ skillsText +"\r\n";
+        var awardsText = document.getElementById("awards").value
+        textInput +="\r\nAwards Recognition : "+ awardsText +"\r\n";
+        var workText = document.getElementById("work").value
+        textInput +="\r\nWork Experience : "+ workText +"\r\n";
+        var refreesText = document.getElementById("referees").value
+        textInput +="Referees : "+ refreesText +"\r\n";
+        var myBlob = new Blob([textInput],{type:"text/plain"});
+
+
+        var url = window.URL.createObjectURL(myBlob);
+        var anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = "resume.txt";
+
+        anchor.click();
+        window.URL.revokeObjectURL(url);
+        //document.removeChild(anchor);
+    }
+</script>

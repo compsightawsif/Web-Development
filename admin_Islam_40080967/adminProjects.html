@@ -3,10 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Projects</title>
+  <link rel="stylesheet" href="CSS/styles.css"/>
 </head>
 <body>
-<textarea>My Projects</textarea>
-<input type="submit">
+<div>
+  <ul id="list-nav">
+    <li><a href="adminIndex.html">Home</a></li>
+    <li><a href="adminResume.html">Resume</a></li>
+    <li><a href="adminProjects.html">Projects</a></li>
+    <li><a href="adminContact.html">Contact</a></li>
+    <li><a href="adminSocial.html">Social</a></li>
+    <li><a href="logout.html">Logout</a></li>
+  </ul>
+</div>
+<label>My Projects<br>
+  <textarea></textarea>
+</label><br>
+<input type="submit" onclick="submitProjects()">
 
 </body>
 </html>
+
+<script type="text/javascript">
+  function submitProjects() {
+
+    var textInput ="Admin projects form value:";
+    var projectText = document.getElementById("adminStatement").value;
+    textInput +="\r\nProjects : "+ projectText + "\r\n";
+    var myBlob = new Blob([textInput],{type:"text/plain"});
+
+
+    var url = window.URL.createObjectURL(myBlob);
+    var anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = "projects.txt";
+
+    anchor.click();
+    window.URL.revokeObjectURL(url);
+    //document.removeChild(anchor);
+  }
+</script>

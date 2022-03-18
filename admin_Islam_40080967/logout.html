@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Logout</title>
+    <link rel="stylesheet" href="CSS/styles.css"/>
 </head>
 <body>
-<input type="submit" value="Logout">
+<div>
+    <ul id="list-nav">
+        <li><a href="adminIndex.html">Home</a></li>
+        <li><a href="adminResume.html">Resume</a></li>
+        <li><a href="adminProjects.html">Projects</a></li>
+        <li><a href="adminContact.html">Contact</a></li>
+        <li><a href="adminSocial.html">Social</a></li>
+        <li><a href="logout.html">Logout</a></li>
+    </ul>
+</div>
+<input class="logout-btn" type="submit" value="Logout" onclick="processLogout()">
 </body>
 </html>
+
+<script>
+    function processLogout() {
+        var logout = document.querySelector('.logout-btn');
+        logout.addEventListener('click', processLogout);
+        alert('Logging out and clearing sessions.')
+        sessionStorage.clear();
+    }
+</script>

@@ -3,12 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Social</title>
+    <link rel="stylesheet" href="CSS/styles.css"/>
 </head>
 <body>
-<label>Social Link 1<input type="text"></label>
-<label>Social Link 2<input type="text"></label>
-<label>Social Link 3<input type="text"></label>
-<input type="submit">
+<div>
+    <ul id="list-nav">
+        <li><a href="adminIndex.html">Home</a></li>
+        <li><a href="adminResume.html">Resume</a></li>
+        <li><a href="adminProjects.html">Projects</a></li>
+        <li><a href="adminContact.html">Contact</a></li>
+        <li><a href="adminSocial.html">Social</a></li>
+        <li><a href="logout.html">Logout</a></li>
+    </ul>
+</div>
+<label>Social Link 1<br><input type="text"></label><br>
+<label>Social Link 2<br><input type="text"></label><br>
+<label>Social Link 3<br><input type="text"></label><br>
+<input type="submit" onclick="submitSocial()">
 
 </body>
 </html>
+
+<script type="text/javascript">
+    function submitSocial() {
+
+        var textInput ="Admin social form value:";
+        var social1Text = document.getElementById("education").value;
+        textInput +="\r\nSocial Link 1 : "+ social1Text + "\r\n";
+        var social2Text = document.getElementById("skills").value
+        textInput +="\r\nSocial Link 2 : "+ social2Text +"\r\n";
+        var social3Text = document.getElementById("awards").value
+        textInput +="\r\nSocial Link 3 : "+ social3Text +"\r\n";
+        var myBlob = new Blob([textInput],{type:"text/plain"});
+
+
+        var url = window.URL.createObjectURL(myBlob);
+        var anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = "resume.txt";
+
+        anchor.click();
+        window.URL.revokeObjectURL(url);
+        //document.removeChild(anchor);
+    }
+</script>

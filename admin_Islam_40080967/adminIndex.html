@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Index</title>
+    <link rel="stylesheet" href="CSS/styles.css"/>
 </head>
 <body>
-<textarea id="adminStatement">Professional Statement</textarea>
-<textarea id="adminBio">Brief Biography</textarea>
+<div>
+    <ul id="list-nav">
+        <li><a href="adminIndex.html">Home</a></li>
+        <li><a href="adminResume.html">Resume</a></li>
+        <li><a href="adminProjects.html">Projects</a></li>
+        <li><a href="adminContact.html">Contact</a></li>
+        <li><a href="adminSocial.html">Social</a></li>
+        <li><a href="logout.html">Logout</a></li>
+    </ul>
+</div>
+<label>Professional Statement<br><textarea id="adminStatement"></textarea></label>
+<br>
+<label>Brief Biography<br></label><textarea id="adminBio"></textarea>
 <input type="submit" onclick="submitIndex()">
 </body>
 </html>
@@ -14,12 +26,12 @@
 <script type="text/javascript">
     function submitIndex() {
 
-        var textInput ="Admin index form value:";
+        var textInput = "Admin index form value:";
         var statementText = document.getElementById("adminStatement").value;
-        textInput +="\r\nStatement : "+ statementText + "\r\n";
+        textInput += "\r\nStatement : " + statementText + "\r\n";
         var bioText = document.getElementById("adminBio").value
-        textInput +="Bio : "+ bioText +"\r\n";
-        var myBlob = new Blob([textInput],{type:"text/plain"});
+        textInput += "Bio : " + bioText + "\r\n";
+        var myBlob = new Blob([textInput], {type: "text/plain"});
 
 
         var url = window.URL.createObjectURL(myBlob);
@@ -30,7 +42,5 @@
         anchor.click();
         window.URL.revokeObjectURL(url);
         //document.removeChild(anchor);
-
-
     }
 </script>
